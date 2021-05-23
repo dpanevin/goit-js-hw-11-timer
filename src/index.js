@@ -1,16 +1,10 @@
-const refs = {
-    days: document.querySelector('.js-days'),
-    hours: document.querySelector('.js-hours'),
-    mins: document.querySelector('.js-mins'),
-    secs: document.querySelector('.js-secs'),
-}
-
 class CountdownTimer {
     constructor({ selector, targetDate }) {
         this.selector = selector;
         this.targetDate = targetDate;
         this._isActive = false;
         this._intervalId = null;
+        this._timerEl = document.querySelector(this.selector);
     }
 
     start() {
@@ -53,10 +47,10 @@ class CountdownTimer {
     }
 
     updateMarkup({ days, hours, mins, secs }) {
-    refs.days.innerHTML = days;
-    refs.hours.innerHTML = hours;
-    refs.mins.innerHTML = mins;
-    refs.secs.innerHTML = secs;
+    this._timerEl.querySelector('.js-days').innerHTML = days;
+    this._timerEl.querySelector('.js-hours').innerHTML = hours;
+    this._timerEl.querySelector('.js-mins').innerHTML = mins;
+    this._timerEl.querySelector('.js-secs').innerHTML = secs;
 }
 }
 
